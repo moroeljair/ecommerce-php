@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if( isset( $_SESSION['lang'] ) ){
+        $idioma = $_SESSION['lang'];
+    }else{
+        $idioma = 'es';
+    }
+
+#definir palabras en un idioma que vera en los documentos ini
+$archivo = file_exists( "./Views/idiomas/$idioma.ini" ) ? "./Views/idiomas/$idioma.ini" : "./Views/idiomas/es.ini";
+//$palabras = parse_ini_file( $archivo ); //cuando no se tiene separado por secciones
+$palabras = parse_ini_file( $archivo, true );
+var_dump($palabras);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,20 +155,37 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./Views/login.php" role="button">
-          <i class="far fa-user"></i> Iniciar sesión 
+          <i class="far fa-user"></i> <?php echo $palabras['header']['iniciar_sesion']; ?> 
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="Util/img/avatar.png" alt="" width="30" height="30" class="img-fluid img-circle">
-          <span>Usuario logueado</span>
+          <span><?php echo $palabras['header']['usuario_logueado']; ?> </span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Mi perfil</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-shopping-basket"></i> Mis pedidos</a>
-          <a class="dropdown-item" href=""><i class="fas fa-user-times"></i> Cerrar sesión</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> 
+          <?php echo $palabras['header']['mi_perfil']; ?></a>
+          <a class="dropdown-item" href="#"><i class="fas fa-shopping-basket"></i> 
+          <?php echo $palabras['header']['mis_pedidos']; ?></a>
+          <a class="dropdown-item" href=""><i class="fas fa-user-times"></i>
+          <?php echo $palabras['header']['cerrar_sesion']; ?></a>
         </div>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-solid fa-language"></i>
+          <span><?php echo $palabras['header']['idioma']; ?> </span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=es">
+          <?php echo $palabras['idiomas']['es']; ?></a>
+          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=fr"> 
+          <?php echo $palabras['idiomas']['fr']; ?></a>
+        </div>
+      </li>
+
     </ul>
   </nav>
   <!-- /.navbar -->

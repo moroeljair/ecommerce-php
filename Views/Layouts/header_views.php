@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+    if( isset( $_SESSION['lang'] ) ){
+        $idioma = $_SESSION['lang'];
+    }else{
+        $idioma = 'es';
+    }
+
+#definir palabras en un idioma que vera en los documentos ini
+$archivo = file_exists( "./idiomas/$idioma.ini" ) ? "./idiomas/$idioma.ini" : "./idiomas/es.ini";
+//$palabras = parse_ini_file( $archivo ); //cuando no se tiene separado por secciones
+$palabras = parse_ini_file( $archivo, true );
+var_dump($palabras);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
