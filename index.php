@@ -58,3 +58,5 @@
 <?php
  include_once './Views/Layouts/footer.php';
 ?>
+
+<script src="index.js"></script>

@@ -4,8 +4,8 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <img src="../Util/Img/logo.jpg" alt="" class="profile-user-img img-fluid img-circle">
-    <a href="../index.php"><b>Code</b>WAR</a>
+    <img src="../Util/Img/logo.png" alt="" class="profile-user-img img-fluid img-circle">
+    <a href="../index.php"><b><?php echo $palabras['header']['titulo'];?></b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -48,7 +48,7 @@
         </a>
       </p>
       <p class="mb-0">
-        <a href="" class="text-center">
+        <a href="./register.php" class="text-center">
           <?php echo $palabras['login']['registrarse']; ?>
         </a>
       </p>

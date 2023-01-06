@@ -25,5 +25,6 @@ var_dump($palabras);
   <link rel="stylesheet" href="../Util/Css/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../Util/Css/adminlte.min.css">
+  <link rel="stylesheet" href="../Util/Css/toastr.min.css">
 </head>
 
