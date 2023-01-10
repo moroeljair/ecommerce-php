@@ -49,6 +49,42 @@
         }
      }
 
+     if($_POST['funcion']=='registrar_usuario'){
+        $username = $_POST['username'];
+        $pass =$_POST['pass'];
+        $nombres =$_POST['nombres'];
+        $apellidos =$_POST['apellidos'];
+        $dni =$_POST['dni'];
+        $email =$_POST['email'];
+        $telefono =$_POST['telefono'];
+
+        $usuario -> registrar_usuario($username,$pass,$nombres,$apellidos,$dni,$email,$telefono);
+        echo 'success';
+     }
+
+     if($_POST['funcion']=='obtener_datos'){
+        try{
+            $usuario->obtener_datos($_SESSION['id']);
+            foreach ($usuario->objetos as $objeto) {
+                $json[]=array(
+                    'username'=>$objeto->user,
+                    'nombres'=>$objeto->nombres,
+                    'apellidos'=>$objeto->apellidos,
+                    'dni'=>$objeto->dni,
+                    'email'=>$objeto->email,
+                    'telefono'=>$objeto->telefono,
+                    'avatar'=>$objeto->avatar,
+                    'tipo_usuario'=>$objeto->tipo
+                );
+            }
+            $json_string = json_encode($json[0]);
+            echo $json_string;
+        }catch(Exception $e){
+            echo $e-> getMessage();
+            return "CARGA FALLIDA";
+        }
+     }
+
     if($_POST['funcion']=='listar_usuario'){
         echo 'hola';
     }

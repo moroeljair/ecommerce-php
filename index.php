@@ -2,7 +2,7 @@
  include_once './Views/Layouts/header.php';
 ?>
 
-<title>Home | Codewar</title>
+<title><?php echo $palabras['title']['index'];?></title>
 
 <!-- Content Header (Page header) -->
     <section class="content-header">

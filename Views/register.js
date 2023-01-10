@@ -2,8 +2,23 @@ let palabras;
 var idioma;
 $(document).ready(function ()
 {
-    var funcion="lenguaje";
+  var funcion;
+  verificar_sesion();
+
+    function verificar_sesion(){
+        funcion = 'verificar_sesion';
+        $.post('../Controllers/UsuarioController.php', {funcion}, (response)=>{
+            if(response != ''){
+                location.href = '../index.php';
+            }
+           
+        });
+    }
+
+
+
     //console.log("hola");
+    funcion='lenguaje';
     $.post('../Controllers/idiomas.php', {funcion}, (response)=>{
         idioma = response;
         $.getJSON( "./idiomas/"+idioma+".json", function( json )
@@ -39,9 +54,39 @@ $(document).ready(function ()
 
 
             $(function () {
+
                 $.validator.setDefaults({
                   submitHandler: function () {
-                    alert( "Form successful submitted!" );
+                    /*FUNCION SI TODO ESTA BIEN*/
+                    let username = $('#username').val();
+                    let pass = $('#pass').val();
+                    let nombres = $('#nombres').val();
+                    let apellidos = $('#apellidos').val();
+                    let dni = $('#dni').val();
+                    let email = $('#email').val();
+                    let telefono = $('#telefono').val();
+                    funcion = "registrar_usuario";
+                    $.post('../Controllers/UsuarioController.php',{username,pass,nombres,apellidos,dni,email,telefono,funcion},(response)=>{
+                      response = response.trim();
+                      if(response=="success"){
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: palabras.validaciones_registro.mensaje_registro.exito,
+                          showConfirmButton: false,
+                          timer: 2500
+                        }).then(function(){
+                          $('#form-register').trigger('reset');
+                          location.href='../Views/login.php';
+                        });
+                      }else{
+                        Swal.fire({
+                          icon: 'error',
+                          title: 'X',
+                          text: palabras.validaciones_registro.mensaje_registro.falla
+                        })
+                      }
+                    });
                   }
                 });
 

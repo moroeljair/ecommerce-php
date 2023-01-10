@@ -30,11 +30,7 @@
         "telefono":{
             "min":"Mínimo 7 dígitos"
         },
-        "terms":"Acepta los términos, por favor",
-        "mensaje_registro":{
-            "exito":"Se ha registrado correctamente",
-            "falla":"Hubo un conflicto en el registro"
-        }
+        "terms":"Acepta los términos, por favor"
     },
     "usuarios":"jeje"
 }

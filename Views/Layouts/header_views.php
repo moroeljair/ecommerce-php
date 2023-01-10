@@ -10,7 +10,7 @@
 $archivo = file_exists( "./idiomas/$idioma.ini" ) ? "./idiomas/$idioma.ini" : "./idiomas/es.ini";
 //$palabras = parse_ini_file( $archivo ); //cuando no se tiene separado por secciones
 $palabras = parse_ini_file( $archivo, true );
-var_dump($palabras);
+//var_dump($palabras);
 ?>
 
 <!DOCTYPE html>
@@ -26,5 +26,7 @@ var_dump($palabras);
   <!-- Theme style -->
   <link rel="stylesheet" href="../Util/Css/adminlte.min.css">
   <link rel="stylesheet" href="../Util/Css/toastr.min.css">
+  <link rel="stylesheet" href="../Util/Css/sweetalert2.min.css">
+  
 </head>
 

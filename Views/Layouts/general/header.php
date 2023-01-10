@@ -7,7 +7,7 @@
     }
 
 #definir palabras en un idioma que vera en los documentos ini
-$archivo = file_exists( "./Views/idiomas/$idioma.ini" ) ? "./Views/idiomas/$idioma.ini" : "./Views/idiomas/es.ini";
+$archivo = file_exists( "./idiomas/$idioma.ini" ) ? "./idiomas/$idioma.ini" : "./idiomas/es.ini";
 //$palabras = parse_ini_file( $archivo ); //cuando no se tiene separado por secciones
 $palabras = parse_ini_file( $archivo, true );
 //var_dump($palabras);
@@ -22,9 +22,9 @@ $palabras = parse_ini_file( $archivo, true );
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="Util/Css/css/all.min.css">
+  <link rel="stylesheet" href="../Util/Css/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="Util/Css/adminlte.min.css">
+  <link rel="stylesheet" href="../Util/Css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -154,12 +154,12 @@ $palabras = parse_ini_file( $archivo, true );
         </div>
       </li>
       <li class="nav-item" id="nav_register">
-        <a class="nav-link" href="./Views/register.php" role="button">
+        <a class="nav-link" href="register.php" role="button">
           <i class="fas fa-user-plus"></i> <?php echo $palabras['header']['registrarse']; ?> 
         </a>
       </li>
       <li class="nav-item" id="nav_login">
-        <a class="nav-link" href="./Views/login.php" role="button">
+        <a class="nav-link" href="login.php" role="button">
           <i class="far fa-user"></i> <?php echo $palabras['header']['iniciar_sesion']; ?> 
         </a>
       </li>
@@ -169,11 +169,11 @@ $palabras = parse_ini_file( $archivo, true );
           <span id="usuario_nav"><?php echo $palabras['header']['usuario_logueado']; ?> </span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./Views/mi_perfil.php"><i class="fas fa-user-cog"></i> 
+          <a class="dropdown-item" href="mi_perfil.php"><i class="fas fa-user-cog"></i> 
           <?php echo $palabras['header']['mi_perfil']; ?></a>
           <a class="dropdown-item" href="#"><i class="fas fa-shopping-basket"></i> 
           <?php echo $palabras['header']['mis_pedidos']; ?></a>
-          <a class="dropdown-item" href="Controllers/logout.php"><i class="fas fa-user-times"></i>
+          <a class="dropdown-item" href="../Controllers/logout.php"><i class="fas fa-user-times"></i>
           <?php echo $palabras['header']['cerrar_sesion']; ?></a>
         </div>
       </li>
@@ -198,8 +198,8 @@ $palabras = parse_ini_file( $archivo, true );
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="./index.php" class="brand-link">
-      <img src="Util/Img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="../index.php" class="brand-link">
+      <img src="../Util/Img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light"><?php echo $palabras['header']['titulo']; ?></span>
     </a>
 
@@ -208,7 +208,7 @@ $palabras = parse_ini_file( $archivo, true );
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img id="avatar_menu" src="./Util/Img/user_default.png" class="img-circle elevation-2" alt="User Image">
+          <img id="avatar_menu" src="../Util/Img/user_default.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a id="usuario_menu" href="#" class="d-block"></a>

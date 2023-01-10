@@ -11,5 +11,7 @@
 <script src="../Util/Js/jquery.validate.min.js"></script>
 <script src="../Util/Js/jquery-validation/additional-methods.min.js"></script>
 
+<script src="../Util/Js/sweetalert2.min.js"></script>
+
 </body>
 </html>
