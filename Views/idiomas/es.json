@@ -36,5 +36,19 @@
             "falla":"Hubo un conflicto en el registro"
         }
     },
-    "usuarios":"jeje"
+    "mi_perfil":{
+        "departamento_p":"Seleccione una región",
+        "provincia":"Seleccione una provincia",
+        "ciudad":"Seleccione una ciudad",
+        "noResults":"No hay resultado",
+        "searching":"Buscando..."
+    },
+    "borrar_direccion":{
+        "title":"¿Estás seguro?",
+        "text":"Se eliminará esta dirección, no hay reversa",
+        "confirmButtonText":"Ok",
+        "cancelButtonText":"Cancelar",
+        "deleted":"Se ha borrado la dirección",
+        "no":"Se ha cancelado la acción"
+    }
 }

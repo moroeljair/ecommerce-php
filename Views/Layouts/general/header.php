@@ -22,9 +22,13 @@ $palabras = parse_ini_file( $archivo, true );
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
+  <link rel="stylesheet" href="../Util/Css/select2.min.css">
   <link rel="stylesheet" href="../Util/Css/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../Util/Css/adminlte.min.css">
+  <link rel="stylesheet" href="../Util/Css/sweetalert2.min.css">
+
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -184,9 +188,9 @@ $palabras = parse_ini_file( $archivo, true );
           <span><?php echo $palabras['header']['idioma']; ?> </span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=es">
+          <a class="dropdown-item"  onclick="cambiarIdioma('es')">
           <?php echo $palabras['idiomas']['es']; ?></a>
-          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=fr"> 
+          <a class="dropdown-item"  onclick="cambiarIdioma('fr')"> 
           <?php echo $palabras['idiomas']['fr']; ?></a>
         </div>
       </li>
@@ -872,3 +876,5 @@ $palabras = parse_ini_file( $archivo, true );
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
+

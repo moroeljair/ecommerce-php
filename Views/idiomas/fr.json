@@ -30,7 +30,16 @@
         "telefono":{
             "min":"Mínimo 7 dígitos"
         },
-        "terms":"Acepta los términos, por favor"
+        "terms":"Acepta los términos, por favor",
+        "mensaje_registro":{
+            "exito":"Se ha registrado correctamente",
+            "falla":"Hubo un conflicto en el registro"
+        }
+    },
+    "mi_perfil":{
+        "departamento_p":"Seleccione una región en france",
+        "noResults":"No hay resultado",
+        "searching":"Buscando..."
     },
     "usuarios":"jeje"
 }

@@ -2,6 +2,59 @@
  include_once './Layouts/general/header.php';
 ?>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_direcciones" role="dialog ">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          <?php echo $palabras['mi_perfil']['agregar_direccion'];?>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form-direccion">
+          <div class="form-group">
+            <label for=""><?php echo $palabras['mi_perfil_form']['region'];?></label>
+            <select id="departamento" class="form-control" style="width:100%" required></select>
+          </div>
+          <div class="form-group">
+            <label for=""><?php echo $palabras['mi_perfil_form']['provincia'];?></label>
+            <select id="provincia" class="form-control" style="width:100%" required></select>
+          </div>
+          <div class="form-group">
+            <label for=""><?php echo $palabras['mi_perfil_form']['ciudad'];?></label>
+            <select id="distrito" class="form-control" style="width:100%" required></select>
+          </div>
+          <div class="form-group">
+            <label for=""><?php echo $palabras['mi_perfil_form']['direccion'];?></label>
+            <input type="text" id="direccion" class="form-control" placeholder="<?php echo $palabras['mi_perfil_form']['direccion_p'];?>" required>
+          </div>
+          <div class="form-group">
+            <label for=""><?php echo $palabras['mi_perfil_form']['referencia'];?></label>
+            <input type="text" id="referencia" class="form-control" placeholder="<?php echo $palabras['mi_perfil_form']['referencia_p'];?>">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <?php echo $palabras['mi_perfil']['cerrar'];?>
+        </button>
+        <button type="submit" class="btn btn-primary">
+          <?php echo $palabras['mi_perfil']['guardar'];?>
+        </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <title><?php echo $palabras['title']['mi_perfil'];?></title>
 
 
@@ -89,25 +142,13 @@
                 <div class="card-header border-bottom-0">
                     <strong> <?php echo $palabras['mi_perfil']['mis_direcciones'];?> </strong>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool">
+                        <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modal_direcciones">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
                 </div>
-                <div class="card-body pt-0 mt-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <h2 class="lead"><b>Nicole Pearson</b></h2>
-                      <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-4 text-center">
-                        <img src="../Util/Img/direccion.png" alt="" class="img-circle img-fluid">
-                    </div>
-                  </div>
+                <div id="direcciones" class="card-body pt-0 mt-3">
+                  
                 </div>
               </div>
 
