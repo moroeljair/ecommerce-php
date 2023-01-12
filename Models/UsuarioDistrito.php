@@ -30,13 +30,28 @@
                 $sql="SELECT ud.id, ud.direccion, ud.referencia, ciudad.nombre as nciudad
                     FROM usuario_ciudad as ud 
                     JOIN ciudad ON ud.id_ciudad=ciudad.id
-                    WHERE ud.id_usuario=:id;";
+                    WHERE ud.id_usuario=:id AND estado='A';";
                 $query = $this->acceso->prepare($sql);
                 $query->execute(array(':id'=>$id_usuario));
                 $this->objetos = $query->fetchAll();
                 return $this->objetos;                    
             }catch(Exception $e){
                 echo $e->getMessage();
+            }
+        }
+
+        function eliminar_direccion($id_direccion){
+            try{
+                $sql="
+                UPDATE usuario_ciudad SET estado='I' 
+                WHERE id=:id_direccion;
+                ";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id_direccion'=>$id_direccion));
+                }
+            catch(Exception $e){
+                echo $e-> getMessage();
+                return "CARGA FALLIDA";
             }
         }
 

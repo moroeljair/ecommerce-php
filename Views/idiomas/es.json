@@ -49,6 +49,7 @@
         "confirmButtonText":"Ok",
         "cancelButtonText":"Cancelar",
         "deleted":"Se ha borrado la dirección",
-        "no":"Se ha cancelado la acción"
+        "no":"Se ha cancelado la acción",
+        "error":"Error no se ha borrado"
     }
 }

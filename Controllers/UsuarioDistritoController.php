@@ -2,6 +2,7 @@
 
 
     include_once '../Models/UsuarioDistrito.php';
+    include_once '../Util/Config/config.php';
     include_once 'idiomas.php';
     
     $usuario_distrito = new UsuarioDistrito();
@@ -30,7 +31,7 @@
             $json=array();
             foreach ($usuario_distrito->objetos as $objeto) {
                 $json[]=array(
-                    'id'=>$objeto->id,
+                    'id'=>openssl_encrypt($objeto->id,CODE,KEY),
                     'direccion'=>$objeto->direccion,
                     'referencia'=>$objeto->referencia,
                     'ciudad'=>$objeto->nciudad,
@@ -47,11 +48,16 @@
 
      if($_POST['funcion']=='eliminar_direccion'){
         try{
-            $id_direccion = $_POST['id'];
-            $usuario_distrito->eliminar_direccion($id_direccion);
-            echo 'success';
+            $id_direccion = openssl_decrypt($_POST['id'],CODE,KEY);
+            if(is_numeric($id_direccion)){
+                $usuario_distrito->eliminar_direccion($id_direccion);
+                echo 'success';
+            }else{
+                echo 'error';
+            }
+            
         }catch(Exception $e){
             //echo $e-> getMessage();
-            echo 'fail';
+            echo $e;
         }
      }

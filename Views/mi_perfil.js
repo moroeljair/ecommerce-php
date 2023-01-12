@@ -104,7 +104,7 @@ $(document).ready(function(){
         {     
             //cargar palabras del lenguaje   
             palabras=json;
-            console.log(palabras);
+            //console.log(palabras);
 
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -126,14 +126,25 @@ $(document).ready(function(){
                 if (result.isConfirmed) {
                     funcion="eliminar_direccion";
                     $.post("../Controllers/UsuarioDistritoController.php",{funcion,id},(response)=>{
-                        console.log(response);
+                        response=response.trim();
+                        if(response=='success'){
+                            swalWithBootstrapButtons.fire(
+                                palabras.borrar_direccion.deleted,
+                                '',
+                                'success'
+                              );
+                              //location.href='./mi_perfil.php';
+                              llenar_direcciones();
+                        }else{
+                            swalWithBootstrapButtons.fire(
+                                palabras.borrar_direccion.error,
+                                '',
+                                'error'
+                              )
+                        }
                     });
                 
-                  swalWithBootstrapButtons.fire(
-                    palabras.borrar_direccion.deleted,
-                    '',
-                    'success'
-                  )
+                  
                 } else if (
                   /* Read more about handling dismissals below */
                   result.dismiss === Swal.DismissReason.cancel
@@ -142,7 +153,8 @@ $(document).ready(function(){
                     palabras.borrar_direccion.no,
                     '',
                     'error'
-                  )
+                  );
+                  
                 }
               })
 
