@@ -7,6 +7,8 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
+        
+        <!--
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Blank Page</h1>
@@ -18,6 +20,10 @@
             </ol>
           </div>
         </div>
+        -->
+
+       
+      <iframe src="http://localhost/carritov1/" frameborder="100" style='whidth:"100%";'></iframe>  
       </div><!-- /.container-fluid -->
     </section>
 

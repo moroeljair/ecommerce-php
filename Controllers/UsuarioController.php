@@ -85,6 +85,66 @@
         }
      }
 
+     if($_POST['funcion']=='editar_datos'){
+        try{
+            $id_usuario=$_SESSION['id'];
+            $nombres =$_POST['nombres_mod'];
+            $apellidos =$_POST['apellidos_mod'];
+            $dni =$_POST['dni_mod'];
+            $email =$_POST['email_mod'];
+            $telefono =$_POST['telefono_mod'];
+
+            //archivo de imagen
+            $avatar = $_FILES['avatar_mod']['name'];
+            if($avatar!=''){
+                $nombre=uniqid().'-'.$avatar;
+                $ruta='../Util/Img/Users/'.$nombre;
+                //guardar un archivo
+                //move_uploaded_file($_FILES[name del input]['tmp_name'],ruta donde guardar)
+                move_uploaded_file($_FILES['avatar_mod']['tmp_name'],$ruta);
+                $usuario->obtener_datos($id_usuario);
+                foreach($usuario->objetos as $objeto){
+                    $avatar_actual=$objeto->avatar;
+                    if($avatar_actual!='user_default.png'){
+                        //borrar un archivo
+                        unlink('../Util/Img/Users/'.$avatar_actual);
+                    }
+                } 
+                $_SESSION['avatar']=$nombre;
+            }else{
+                $nombre='';
+            }
+            $usuario -> editar_datos($id_usuario,$nombres,$apellidos,$dni,$email,$telefono,$nombre);
+            echo json_encode(array('ok',$palabras['modal_datos']['ok']));
+        }catch(Exception $e){
+            //echo $e-> getMessage();
+            echo json_encode(array('fail',$palabras['modal_datos']['fail']));
+        }
+     }
+
+     if($_POST['funcion']=='cambiar_contra'){
+        try{
+            $id_usuario=$_SESSION['id'];
+            $pass_old =$_POST['pass_old'];
+            $pass_new =$_POST['pass_new'];
+
+            $usuario->comprobar_pass($id_usuario,$pass_old);
+            if(!empty($usuario->objetos)){
+                $usuario->cambiar_contra($id_usuario,$pass_new);
+                echo json_encode(array('ok',$palabras['mis_datos']['cambio']));
+            }else{
+                echo json_encode(array('error',$palabras['mis_datos']['pass_incorrecto'],$palabras['mis_datos']['ingrese_pass_corr']));
+            }
+
+        }catch(Exception $e){
+            //echo $e-> getMessage();
+            echo json_encode(array('fail',$palabras['modal_datos']['fail']));
+        }
+     }
+
+
+     
+
     if($_POST['funcion']=='listar_usuario'){
         echo 'hola';
     }

@@ -190,8 +190,10 @@ $palabras = parse_ini_file( $archivo, true );
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item"  onclick="cambiarIdioma('es')">
           <?php echo $palabras['idiomas']['es']; ?></a>
-          <a class="dropdown-item"  onclick="cambiarIdioma('fr')"> 
-          <?php echo $palabras['idiomas']['fr']; ?></a>
+          <a class="dropdown-item"  onclick="cambiarIdioma('ar')"> 
+          <?php echo $palabras['idiomas']['ar']; ?></a>
+          <a class="dropdown-item"  onclick="cambiarIdioma('en')"> 
+          <?php echo $palabras['idiomas']['en']; ?></a>
         </div>
       </li>
 

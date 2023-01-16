@@ -97,9 +97,18 @@ $(document).ready(function ()
                     //value lo que contiene el campo
                     //la funcion devuelve o true o false
                     //ve el patron si contiene solo letras 
-                    return /^[A-Za-z]+$/.test(value);
+                    //console.log(value);
+                    let variable = value.replace(/ /g, "");
+                    return /^[A-Za-z]+$/.test(variable);
                   }
                   ,"Este campo solo permite letras");
+
+                jQuery.validator.addMethod("cedula",
+                  function(value,element){
+                    
+                    return comprobar_numero_cedula(value);
+                  }
+                  ,"Cédula incorrecta");
 
                 /*VER SI NOMBRE DE USUARIO EXISTE*/ 
                 jQuery.validator.addMethod("usuario_existente",
@@ -163,7 +172,8 @@ $(document).ready(function ()
                     },
                     dni:{
                       required:true,
-                      digits:true
+                      digits:true,
+                      cedula: true
                     },
                     email: {
                       required: true,
@@ -210,7 +220,8 @@ $(document).ready(function ()
                     },
                     dni:{
                       required: palabras.validaciones_registro.dni.required,
-                      digits: palabras.validaciones_registro.dni.digits
+                      digits: palabras.validaciones_registro.dni.digits,
+                      cedula: palabras.validaciones_registro.dni.no_valido
                     },
                     telefono:{
                       required: palabras.validaciones_registro.nombres.required,

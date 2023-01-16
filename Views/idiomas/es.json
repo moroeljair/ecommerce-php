@@ -21,7 +21,8 @@
         },
         "dni":{
             "required": "Introduzca su DNI",
-            "digits": "Solo números"
+            "digits": "Solo números",
+            "no_valido":"Cédula incorrecta"
         },
         "email":{
             "required": "Digite su email",

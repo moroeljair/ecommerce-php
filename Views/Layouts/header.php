@@ -184,10 +184,12 @@ $palabras = parse_ini_file( $archivo, true );
           <span><?php echo $palabras['header']['idioma']; ?> </span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=es">
+          <a class="dropdown-item"  onclick="cambiarIdioma2('es')">
           <?php echo $palabras['idiomas']['es']; ?></a>
-          <a class="dropdown-item" href="./Views/Layouts/lang.php?l=fr"> 
-          <?php echo $palabras['idiomas']['fr']; ?></a>
+          <a class="dropdown-item"  onclick="cambiarIdioma2('ar')"> 
+          <?php echo $palabras['idiomas']['ar']; ?></a>
+          <a class="dropdown-item"  onclick="cambiarIdioma2('en')"> 
+          <?php echo $palabras['idiomas']['en']; ?></a>
         </div>
       </li>
 

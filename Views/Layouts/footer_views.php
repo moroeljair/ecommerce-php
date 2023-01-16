@@ -1,3 +1,6 @@
+<script src="../Util/Js/cedula.js"></script>
+
+
 <!-- jQuery -->
 <script src="../Util/Js/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
