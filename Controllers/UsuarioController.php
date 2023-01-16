@@ -3,11 +3,15 @@
 
     include_once '../Models/Usuario.php';
     include_once 'idiomas.php';
+    include_once '../Util/Config/config.php';
     
     $usuario = new Usuario();
     if($_POST['funcion']=='login'){
         $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        //encripto password y lo envia para ser comparado
+        $pass = openssl_encrypt($_POST['pass'],CODE,KEY);
+        //si desearia desencriptar
+        //$var_desencriptado=openssl_decrypt($valor,CODE,KEY)
         $usuario->loguearse($user,$pass);
         //var_dump($usuario);
         if($usuario->objetos!=null){
@@ -51,7 +55,7 @@
 
      if($_POST['funcion']=='registrar_usuario'){
         $username = $_POST['username'];
-        $pass =$_POST['pass'];
+        $pass = openssl_encrypt($_POST['pass'],CODE,KEY);
         $nombres =$_POST['nombres'];
         $apellidos =$_POST['apellidos'];
         $dni =$_POST['dni'];
@@ -125,8 +129,8 @@
      if($_POST['funcion']=='cambiar_contra'){
         try{
             $id_usuario=$_SESSION['id'];
-            $pass_old =$_POST['pass_old'];
-            $pass_new =$_POST['pass_new'];
+            $pass_old =openssl_encrypt($_POST['pass_old'],CODE,KEY);
+            $pass_new =openssl_encrypt($_POST['pass_new'],CODE,KEY);
 
             $usuario->comprobar_pass($id_usuario,$pass_old);
             if(!empty($usuario->objetos)){
