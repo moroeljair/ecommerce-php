@@ -66,10 +66,8 @@ $(document).ready(function(){
             }
           })
     }
- 
 
     
-
     function llenar_direcciones(){
         funcion="llenar_direcciones";
         $.post("../Controllers/UsuarioDistritoController.php",{funcion},(response)=>{

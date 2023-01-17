@@ -424,6 +424,8 @@
                     </div>
                     <!-- /.post -->
                   </div>
+
+                  
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="timeline">
                     <!-- The timeline -->
@@ -519,6 +521,11 @@
                       </div>
                     </div>
                   </div>
+                  
+                  
+                  
+                  
+                  
                   <!-- /.tab-pane -->
 
                   <div class="tab-pane" id="settings">
@@ -589,3 +596,4 @@
 ?>
 
 <script src="mi_perfil.js"></script>
+<script src="mi_perfil_activity.js"></script>
