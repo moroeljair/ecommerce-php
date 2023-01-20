@@ -3,7 +3,7 @@
 
     class UsuarioDistrito{
         //variable global
-        var $objetos;
+        var $objetos=array();
 
         public function __construct(){
             $db = new Conexion();
@@ -33,6 +33,21 @@
                     WHERE ud.id_usuario=:id AND estado='A';";
                 $query = $this->acceso->prepare($sql);
                 $query->execute(array(':id'=>$id_usuario));
+                $this->objetos = $query->fetchAll();
+                return $this->objetos;                    
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+        }
+
+        function recuperar_direccion($id_direccion){
+            try{
+                $sql="SELECT ud.id, ud.direccion, ud.referencia, ciudad.nombre as nciudad
+                    FROM usuario_ciudad as ud 
+                    JOIN ciudad ON ud.id_ciudad=ciudad.id
+                    WHERE ud.id=:id";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id'=>$id_direccion));
                 $this->objetos = $query->fetchAll();
                 return $this->objetos;                    
             }catch(Exception $e){

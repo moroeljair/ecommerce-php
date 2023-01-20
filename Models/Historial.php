@@ -27,6 +27,39 @@
             }
         }
 
+        function crear_historial($descripcion,$tipo_historial,$modulo,$id_usuario){
+            try{
+                $sql="INSERT INTO historial(descripcion,id_tipo_historial,id_modulo,id_usuario) 
+                    VALUES(:descripcion,:id_tipo_historial,:id_modulo,:id_usuario)";
+                $query = $this->acceso->prepare($sql);
+                $variables = array(
+                    ':descripcion'=>$descripcion,
+                    ':id_tipo_historial'=>$tipo_historial,
+                    ':id_modulo'=>$modulo,
+                    ':id_usuario'=>$id_usuario
+                );
+                $query->execute($variables);
+            }
+            catch(Exception $e){
+                return $e->getMessage();
+            }
+        }
+
+        function historial_login($id_usuario){
+            try{
+                $sql="INSERT INTO registro_login(id_usuario) 
+                    VALUES(:id_usuario)";
+                $query = $this->acceso->prepare($sql);
+                $variables = array(
+                    ':id_usuario'=>$id_usuario
+                );
+                $query->execute($variables);
+            }
+            catch(Exception $e){
+                return $e->getMessage();
+            }
+        }
+
  
 
 

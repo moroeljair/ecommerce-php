@@ -3,8 +3,10 @@
 
     include_once '../Models/UsuarioDistrito.php';
     include_once '../Util/Config/config.php';
+    include_once '../Models/Historial.php';
     include_once 'idiomas.php';
     
+    $historial = new Historial();
     $usuario_distrito = new UsuarioDistrito();
    
      if($_POST['funcion']=='crear_direccion'){
@@ -13,8 +15,9 @@
             $direccion = $_POST['direccion'];
             $referencia = $_POST['referencia'];
             $id_usuario = $_SESSION['id'];
-
             $usuario_distrito->crear_direccion($id_usuario,$id_distrito,$direccion,$referencia);
+            $descripcion="Ha creado una nueva dirección ".$direccion;
+            $historial->crear_historial($descripcion,2,1,$id_usuario);
             echo json_encode(array('ok',$palabras['crear_direccion']['ok']));
         }catch(Exception $e){
             //echo $e-> getMessage();
@@ -50,7 +53,13 @@
         try{
             $id_direccion = openssl_decrypt($_POST['id'],CODE,KEY);
             if(is_numeric($id_direccion)){
+                $usuario_distrito->recuperar_direccion($id_direccion);
+                $direccion_borrada = $usuario_distrito->objetos[0]->direccion;
+                
                 $usuario_distrito->eliminar_direccion($id_direccion);
+                
+                $descripcion="Ha eliminado la dirección: ".$direccion_borrada;
+                $historial->crear_historial($descripcion,3,1,$_SESSION['id']);
                 echo 'success';
             }else{
                 echo 'error';

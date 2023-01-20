@@ -134,6 +134,7 @@ $(document).ready(function(){
                 if (result.isConfirmed) {
                     funcion="eliminar_direccion";
                     $.post("../Controllers/UsuarioDistritoController.php",{funcion,id},(response)=>{
+                      console.log(response);
                         response=response.trim();
                         if(response=='success'){
                             swalWithBootstrapButtons.fire(
